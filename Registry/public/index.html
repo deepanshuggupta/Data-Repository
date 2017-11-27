@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Repository</title>
+	<link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="styles/questionnaire.css" />
+	<link type="text/css" rel="stylesheet" href="lib/select2/css/select2.css" />
+</head>
+<body>
+
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="#providers">Data Provider</a></li>
+				<li><a href="#consumers">Data Consumer</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div id="bodyContent" class="container">
+		<div class="media jumbotron">
+			<div class="pull-left">
+				<a href="#providers">
+					<img class="media-object img-circle" src="/images/dataProvider.png" alt="provider">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Data Providers</h2>
+				<p class="well">
+					The HDI is the geometric mean of normalized indices for each of the three dimensions.
+
+					The health dimension is assessed by life expectancy at birth, the education dimension is measured by mean of years of schooling for adults aged 25 years and more and expected years of schooling for children of school entering age. The standard of living dimension is measured by gross national income per capita. The HDI uses the logarithm of income, to reflect the diminishing importance of income with increasing GNI. The scores for the three HDI dimension indices are then aggregated into a composite index using geometric mean.
+				</p>
+			</div>
+		</div>
+		<div class="media jumbotron">
+			<div class="pull-right">
+				<a href="#consumers">
+					<img class="media-object img-circle" src="/images/dataConsumer.jpg" alt="consumer">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Data Consumer</h2>
+				<p class="well">
+
+					We use the term measures when we mean the value measured by whatever mechanism we employ and the term indicator for values we combine and use to hint to specific outcomes and trends.
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="lib/handlebars.js"></script>
+	<script type="text/javascript" src="lib/select2/js/select2.js"></script>
+
+	<script type="text/javascript" src="js/consumers.js"></script>
+	<script type="text/javascript" src="js/providers.js"></script>
+	<script type="text/javascript" src="js/questionnaire.js"></script>
+</body>
+</html>

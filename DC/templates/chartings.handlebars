@@ -1,0 +1,98 @@
+{{!-- The template for showing all quizzes --}}
+<style>
+	#divChartingsTemplate span.glyphicon{
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+</style>
+<div id="divChartingsTemplate">
+	<div id="divChartingModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            <h4 id="titleChartingModal" class="modal-title">Select CHartings</h4>
+		        </div>
+		        <div class="modal-body">
+					<form class="form-horizontal">
+					    <div class="form-group">
+					        <label for="selectIndicator" class="col-sm-2 control-label">Indicator</label>
+					        <div class="col-sm-10">
+					            <select id="selectIndicator" required="required" >
+					            	<option value="">---Select One---</option>
+								  {{#each indicators}}
+								  	<option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label for="selectUnit" class="col-sm-2 control-label">Unit:</label>
+					        <div class="col-sm-10">
+					        	
+					            <select id="selectUnit" required="required" >
+					            <option value="">---Select One---</option>
+								  {{#each units}}
+								  <option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label for="selectArea" class="col-sm-2 control-label">Area:</label>
+					        <div class="col-sm-10">
+					        	
+					            <select id="selectArea" >
+					            <option value="">---Select One---</option>
+								  {{#each areas}}
+								  <option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+
+						<div class="form-group">
+					        <label for="selectSubgroup" class="col-sm-2 control-label">Subgroup:</label>
+					        <div class="col-sm-10">
+					            <select id="selectSubgroup" required="required" >
+					            	<option value="">---Select One---</option>
+								  {{#each subgroups}}
+								  <option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+
+					    <div class="form-group">
+					        <label for="timeDescription" class="col-sm-2 control-label">Time</label>
+					        <div class="col-sm-10">
+					             <textarea type="text" class="form-control" id="timeDescription" placeholder="Enter the time period here"></textarea>
+
+					        </div>
+					    </div>
+
+
+
+					</form>
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		            <button id="btnSaveCharting" type="button" class="btn btn-primary">Go</button>
+		        </div>
+		    </div>
+		    <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+
+ 	<button type="button" class="btn btn-primary btn-lg btn-block" id="analyzeBtn">ANALYZE DATA!!</button>
+	
+	<div id="drawingArea">
+	</div>
+
+</div>
+
+

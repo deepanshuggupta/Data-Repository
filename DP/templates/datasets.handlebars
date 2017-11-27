@@ -1,0 +1,145 @@
+{{!-- The template for showing all quizzes --}}
+<style>
+	#divDatasetsTemplate span.glyphicon{
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+	#divDatasetsTemplate span.glyphicon.glyphicon-plus{
+		margin-right: 0px;
+		padding-left: 2px;
+		padding-bottom: 2px;
+
+		font-size: 35px;
+		position: fixed;
+		right: 1%;
+		top: 17%;
+
+		border: 1px solid black;
+
+		color: white;
+		background-color: black;
+	}
+</style>
+<div id="divDatasetsTemplate">
+	<div id="divDatasetModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            <h4 id="titleDatasetModal" class="modal-title">Save Dataset</h4>
+		            <input id="hdnDatasetIdModal" type="hidden" value="" />
+		        </div>
+		        <div class="modal-body">
+					<form class="form-horizontal">
+
+					    <div class="form-group">
+					        <label for="selectIndicator" class="col-sm-2 control-label">Indicator</label>
+					        <div class="col-sm-10">
+					            <select id="selectIndicator">
+					            	<option value="">---Select One---</option>
+								  {{#each indicators}}
+								  	<option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+
+					    <div class="form-group">
+					        <label for="selectUnit" class="col-sm-2 control-label">Unit:</label>
+					        <div class="col-sm-10">
+					        	
+					            <select id="selectUnit">
+					            <option value="">---Select One---</option>
+								  {{#each units}}
+								  <option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label for="selectArea" class="col-sm-2 control-label">Area:</label>
+					        <div class="col-sm-10">
+					        	
+					            <select id="selectArea">
+					            <option value="">---Select One---</option>
+								  {{#each areas}}
+								  <option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+
+						<div class="form-group">
+					        <label for="selectSubgroup" class="col-sm-2 control-label">Subgroup:</label>
+					        <div class="col-sm-10">
+					            <select id="selectSubgroup">
+					            	<option value="">---Select One---</option>
+								  {{#each subgroups}}
+								  <option value="{{id}}">{{name}}</option>
+								  {{/each}}
+								</select>
+					        </div>
+					    </div>
+
+					    <div class="form-group">
+					        <label for="timeDescription" class="col-sm-2 control-label">TIme</label>
+					        <div class="col-sm-10">
+					            <textarea type="text" class="form-control" id="timeDescription" placeholder="Enter the time period here"></textarea>
+					        </div>
+					    </div>
+
+					    <div class="form-group">
+					        <label for="dataDescription" class="col-sm-2 control-label">Data</label>
+					        <div class="col-sm-10">
+					            <textarea type="text" class="form-control" id="dataDescription" placeholder="Enter the data here"></textarea>
+					        </div>
+					    </div>
+					</form>
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		            <button id="btnSaveDataset" type="button" class="btn btn-primary">Save</button>
+		        </div>
+		    </div>
+		    <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<p class="row">
+		<span class="glyphicon glyphicon-plus" action="create"></span>
+	</p>
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Indicator</th>
+	      <th scope="col">Unit</th>
+	      <th scope="col">Area</th>
+	      <th scope="col">Subgroup</th>
+	      <th scope="col">TimePeriod</th>
+	      <th scope="col">Data</th>
+	      <th scope="col">Option</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		{{#each datasets}}
+		<tr dataset-id="{{id}}">
+	      <td indicator-id={{indicatorId}}>{{indicatorName}}</td>
+	      <td unit-id={{unitId}}>{{unitName}}</td>
+	      <td area-id={{areaId}}>{{areaName}}</td>
+	      <td subgroup-id={{subgroupId}}>{{subgroupName}}</td>
+	      <td purpose="timeperiod">{{timeperiod}}</td>
+	      <td purpose="data">{{data}}</td>
+	      <td><span class="glyphicon glyphicon-pencil pull-right" action="edit"></span>
+	      <span class="glyphicon glyphicon-trash pull-right" action="delete"></span></td>
+	      
+	    </tr>
+	    {{/each}}
+
+	  </tbody>
+	</table>
+</div>
+
+

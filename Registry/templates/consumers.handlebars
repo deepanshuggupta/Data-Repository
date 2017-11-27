@@ -1,0 +1,137 @@
+{{!-- The template for showing all quizzes --}}
+<style>
+	#divConsumersTemplate span.glyphicon{
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+	#divConsumersTemplate span.glyphicon.glyphicon-plus{
+		margin-right: 0px;
+		padding-left: 2px;
+		padding-bottom: 2px;
+
+		font-size: 35px;
+		position: fixed;
+		right: 1%;
+		top: 17%;
+
+		border: 1px solid black;
+
+		color: white;
+		background-color: black;
+	}
+</style>
+<div id="divConsumersTemplate">
+	<div id="divConsumerModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            <h4 id="titleConsumerModal" class="modal-title">Save Consumer</h4>
+		            <input id="hdnConsumerIdModal" type="hidden" value="" />
+		        </div>
+		        <div class="modal-body">
+					<form class="form-horizontal">
+					    <div class="form-group">
+					        <label for="txtName" class="col-sm-2 control-label">Name</label>
+					        <div class="col-sm-10">
+					            <textarea type="text" class="form-control" id="txtName" placeholder="Enter the name here"></textarea>
+					        </div>
+					    </div>
+					<div class="form-group">
+					        <label for="txtDescription" class="col-sm-2 control-label">Description</label>
+					        <div class="col-sm-10">
+					            <input type="text" class="form-control" id="txtDescription" placeholder="Enter the description here"></input>
+					        </div>
+					    </div>
+
+						<div class="form-group">
+					        <label for="txtLink" class="col-sm-2 control-label">Link</label>
+					        <div class="col-sm-10">
+					            <input type="text" class="form-control" id="txtLink" placeholder="Enter the link here"></input>
+					        </div>
+					    </div>
+					
+					    <div class=""form-group>
+					    	<label for="selectSubIds" class="col-sm-2 control-label">Data Providers</label>
+						    <select class="col-sm-10" multiple id="selectSubIds" style="width: 70%">
+								{{#each providers}}
+									<option value="{{id}}">{{name}}</option>
+								{{/each}}
+							</select>
+
+					    </div>
+
+					</form>
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		            <button id="btnSaveConsumer" type="button" class="btn btn-primary">Save</button>
+		        </div>
+		    </div>
+		    <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+
+	<!-- modal2 -->
+	<div class="modal fade" id="modalTwo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="modalLabel">Modal title</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <ul id="subsList">
+
+	        </ul>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- modal2 -->
+
+
+
+	<p class="row">
+		<span class="glyphicon glyphicon-plus" action="create"></span>
+	</p>
+	<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Consumer Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Link</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+	{{#each consumers}}
+	<tr consumer-id={{id}}>
+      <td purpose="name">{{name}}</td>
+      <td purpose="desc">{{desc}}</td>
+      <td purpose="link">{{link}}</td>
+	  <td>
+	  <span class="glyphicon glyphicon-list-alt pull-right" action="popout" subsIds="{{subscription}}" data-toggle="tooltip" data-placement="top" title="Subscriptions"></span>
+	  <span class="glyphicon glyphicon-pencil pull-right" action="edit" data-toggle="tooltip" data-placement="top" title="Edit"></span>
+	  <span class="glyphicon glyphicon-trash pull-right" action="delete" data-toggle="tooltip" data-placement="top" title="Delete"></span>
+	  </td>
+    
+    </tr>
+	{{/each}}
+
+
+  </tbody>
+</table>
+</div>
+
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Provider</title>
+	<link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="styles/questionnaire.css" />
+</head>
+<body>
+
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="#indicators">Indicators</a></li>
+				<li><a href="#units">Units</a></li>
+				<li><a href="#areas">Areas</a></li>
+				<li><a href="#subgroups">Subgroups</a></li>
+				<li><a href="#datasets">Datasets</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li id="liUser" class="hidden"><a href="#">Hi User</a></li>
+				<li id="liLogout" class="hidden"><a href="#logout">Logout</a></li>
+				<li id="liLogin"><a href="#login">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div id="bodyContent" class="container">
+		<div class="media jumbotron">
+			<div class="pull-left">
+				<a href="#indicators">
+					<img class="media-object img-circle" src="/images/indicators.png" alt="Indicators">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Indicators</h2>
+				<p class="well">
+					The HDI is the geometric mean of normalized indices for each of the three dimensions.
+
+					The health dimension is assessed by life expectancy at birth, the education dimension is measured by mean of years of schooling for adults aged 25 years and more and expected years of schooling for children of school entering age. The standard of living dimension is measured by gross national income per capita. The HDI uses the logarithm of income, to reflect the diminishing importance of income with increasing GNI. The scores for the three HDI dimension indices are then aggregated into a composite index using geometric mean.
+				</p>
+			</div>
+		</div>
+		<div class="media jumbotron">
+			<div class="pull-right">
+				<a href="#units">
+					<img class="media-object img-circle" src="/images/units.jpg" alt="units">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Units</h2>
+				<p class="well">
+					Units represent the different methods we employ to understand change over time across a number of dimensions or criteria. It is often used as a catch-all term to describe the method used to measure something, the resulting values obtained from measuring, as well as a calculated or combined set of measures.
+
+					We use the term measures when we mean the value measured by whatever mechanism we employ and the term indicator for values we combine and use to hint to specific outcomes and trends.
+				</p>
+			</div>
+		</div>
+		<div class="media jumbotron">
+			<div class="pull-left">
+				<a href="#areas">
+					<img class="media-object img-circle" src="/images/areas.jpg" alt="Areas">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Areas</h2>
+				<p class="well">
+					The HDI has extended its geographical coverage: David Hastings, of the United Nations Economic and Social Commission for Asia and the Pacific, published a report geographically extending the HDI to 230+ economies, whereas the UNDP HDI for 2009 enumerates 182 economies and coverage for the 2010 HDI dropped to 169 countries.
+
+					Country/region specific HDI lists
+					African countries
+					Argentine provinces
+					Brazilian states
+					Chilean regions
+					Chinese administrative divisions
+					European countries
+					Indian states
+					Indonesian provinces
+					Latin American countries
+					Mexican states
+					Pakistani districts
+					Philippine provinces
+					Russian federal subjects
+					South African provinces
+					U.S. states (American Human Development Report (AHDR))
+					Venezuelan states
+				</p>
+			</div>
+		</div> 
+		<div class="media jumbotron">
+			<div class="pull-right">
+				<a href="#subgroups">
+					<img class="media-object img-circle" src="/images/subgroups.png" alt="Subgroups">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Subgroups</h2>
+				<p class="well">A subgroup is a subset headings under the Human Development Indices, used to measure the indices and later to define the HDI specifically.A subordinate group whose members usually share some common differential quality
+2 :a subset of a mathematical group that is itself a group
+				</p>
+			</div>
+		</div>
+		<div class="media jumbotron">
+			<div class="pull-left">
+				<a href="#datasets">
+					<img class="media-object img-circle" src="/images/datasets.jpg" alt="Datasets">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Datasets</h2>
+				<p class="well">
+					TO COMBINE ALL THE DATA HEADINGS UNDER THE CATEGORIES.
+				</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="lib/handlebars.js"></script>
+	<script type="text/javascript" src="js/indicators.js"></script>
+	<script type="text/javascript" src="js/areas.js"></script>
+	<script type="text/javascript" src="js/subgroups.js"></script>
+	<script type="text/javascript" src="js/units.js"></script>
+	<script type="text/javascript" src="js/datasets.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="js/logout.js"></script>
+	<script type="text/javascript" src="js/questionnaire.js"></script>
+</body>
+</html>

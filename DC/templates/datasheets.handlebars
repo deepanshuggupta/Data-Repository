@@ -1,0 +1,55 @@
+{{!-- The template for showing all quizzes --}}
+<style>
+	#divDatasheetsTemplate span.glyphicon{
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+	#divDatasheetsTemplate span.glyphicon.glyphicon-plus{
+		margin-right: 0px;
+		padding-left: 2px;
+		padding-bottom: 2px;
+
+		font-size: 35px;
+		position: fixed;
+		right: 1%;
+		top: 17%;
+
+		border: 1px solid black;
+
+		color: white;
+		background-color: black;
+	}
+</style>
+
+
+	
+  <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Indicators</th>
+      <th scope="col">Area</th>
+      <th scope="col">Units</th>
+      <th scope="col">Subgroup</th>
+      <th scope="col">Time Period</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each .}}
+	<tr datasheet-id={{id}}>
+      <td purpose="indicator">{{indicatorName}}</td>
+      <td purpose="area">{{areaName}}</td>
+      <td purpose="units">{{unitName}}</td>
+      <td purpose="subgroup">{{subgroupName}}</td>
+      <td purpose="timeperiod">{{timeperiod}}</td>
+	  <td purpose="data">{{data}}</td>
+    </tr>
+	{{/each}}
+
+
+  </tbody>
+</table>
+</div>
+
+

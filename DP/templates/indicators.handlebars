@@ -1,0 +1,79 @@
+{{!-- The template for showing all quizzes --}}
+<style>
+	#divIndicatorsTemplate span.glyphicon{
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+	#divIndicatorsTemplate span.glyphicon.glyphicon-plus{
+		margin-right: 0px;
+		padding-left: 2px;
+		padding-bottom: 2px;
+
+		font-size: 35px;
+		position: fixed;
+		right: 1%;
+		top: 17%;
+
+		border: 1px solid black;
+
+		color: white;
+		background-color: black;
+	}
+</style>
+<div id="divIndicatorsTemplate">
+	<div id="divIndicatorModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            <h4 id="titleIndicatorModal" class="modal-title">Save Indicator</h4>
+		            <input id="hdnIndicatorIdModal" type="hidden" value="" />
+		        </div>
+		        <div class="modal-body">
+					<form class="form-horizontal">
+					    <div class="form-group">
+					        <label for="txtName" class="col-sm-2 control-label">Name</label>
+					        <div class="col-sm-10">
+					            <textarea type="text" class="form-control" id="txtName" placeholder="Enter the name here"></textarea>
+					        </div>
+					    </div>
+					    <div class="form-group">
+					        <label for="txtDescription" class="col-sm-2 control-label">Description</label>
+					        <div class="col-sm-10">
+					            <textarea type="text" class="form-control" id="txtDescription" placeholder="Enter the description here"></textarea>
+					        </div>
+					    </div>
+					</form>
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		            <button id="btnSaveIndicator" type="button" class="btn btn-primary">Save</button>
+		        </div>
+		    </div>
+		    <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<p class="row">
+		<span class="glyphicon glyphicon-plus" action="create"></span>
+	</p>
+	{{#each .}}
+		<div indicator-id="{{id}}" class="panel panel-default">
+		    <div class="panel-heading"><span purpose="name">{{name}}</span>
+		    	<span class="glyphicon glyphicon-pencil pull-right" action="edit"></span>
+		    	<span class="glyphicon glyphicon-trash pull-right" action="delete"></span>
+		    </div>
+		    <div class="panel-body">
+		    	<div class="row">
+		    		<div class="col-md-1"><label>Description: </label></div>
+		    		<div class="col-md-11" purpose="description">{{{desc}}}</div>
+		    	</div>
+		    </div>
+		</div>
+	{{/each}}
+</div>
+
+

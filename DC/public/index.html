@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Consumer</title>
+	<link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="styles/questionnaire.css" />
+</head>
+<body>
+
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="#datasheets">Datasheet</a></li>
+				<li><a href="#chartings">Charting</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div id="bodyContent" class="container">
+		<div class="media jumbotron">
+			<div class="pull-left">
+				<a href="#datasheets">
+					<img class="media-object img-circle" src="/images/indicators.png" alt="Indicators">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Data Sheet</h2>
+				<p class="well">
+					The HDI is the geometric mean of normalized indices for each of the three dimensions.
+
+					The health dimension is assessed by life expectancy at birth, the education dimension is measured by mean of years of schooling for adults aged 25 years and more and expected years of schooling for children of school entering age. The standard of living dimension is measured by gross national income per capita. The HDI uses the logarithm of income, to reflect the diminishing importance of income with increasing GNI. The scores for the three HDI dimension indices are then aggregated into a composite index using geometric mean.
+				</p>
+			</div>
+		</div>
+		<div class="media jumbotron">
+			<div class="pull-right">
+				<a href="#chartings">
+					<img class="media-object img-circle" src="/images/units.jpg" alt="units">
+				</a>
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">Charting</h2>
+				<p class="well">
+					Units represent the different methods we employ to understand change over time across a number of dimensions or criteria. It is often used as a catch-all term to describe the method used to measure something, the resulting values obtained from measuring, as well as a calculated or combined set of measures.
+
+					We use the term measures when we mean the value measured by whatever mechanism we employ and the term indicator for values we combine and use to hint to specific outcomes and trends.
+				</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="lib/handlebars.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+
+	<script type="text/javascript" src="js/datasheets.js"></script>
+	<script type="text/javascript" src="js/chartings.js"></script>
+	<script type="text/javascript" src="js/questionnaire.js"></script>
+</body>
+</html>
