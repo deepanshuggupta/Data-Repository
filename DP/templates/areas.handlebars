@@ -58,6 +58,12 @@
 	
 
 	<ul class="list-group">
+		<li class="list-group-item hide" purposeEx=example>
+		 	<span purpose="name"></span>		     
+			<span class="glyphicon glyphicon-pencil pull-right" action="edit"></span>
+			<span class="glyphicon glyphicon-trash pull-right" action="delete"></span>
+		</li>
+
 		{{#each .}}
 		 <li class="list-group-item" area-id="{{id}}">
 		 	<span purpose="name">{{name}}</span>		     

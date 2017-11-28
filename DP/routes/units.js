@@ -75,7 +75,7 @@ module.exports = (function(){
 				desc: req.body.desc
 			};
 			var units = JSON.parse(data);
-			unitTA.id = parseInt(units[units.length - 1].id, 10) + 1;
+			unitTA.id = parseInt(units.length>0?units[units.length - 1].id:0, 10) + 1;
 			units.push(unitTA);
 
 			fs.writeFile('data/units.json', JSON.stringify(units), function(err, data){

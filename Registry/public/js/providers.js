@@ -144,11 +144,12 @@ var providers = (function(){
 
 	function saveProviderSuccessHandler(data){
 		if(data.newRecord){
-			var $div = $('#divProvidersTemplate tbody tr[provider-id]:first').clone();
+			var $div = $('#divProvidersTemplate tbody tr[purposeEx]').clone();
 
+			$div.removeClass('hide');
 			$div.attr('provider-id', data.providerId);
 			$div.find('[purpose=name]').html(data.name);
-			$div.find('[purpose=description]').html(data.desc);
+			$div.find('[purpose=desc]').html(data.desc);
 			$div.find('[purpose=link]').html(data.link);
 
 			$('#divProvidersTemplate tbody').append($div);
@@ -158,7 +159,7 @@ var providers = (function(){
 
 			$div.attr('provider-id', data.providerId);
 			$div.find('[purpose=name]').html(data.name);
-			$div.find('[purpose=description]').html(data.desc);
+			$div.find('[purpose=desc]').html(data.desc);
 			$div.find('[purpose=link]').html(data.link);
 		}
 

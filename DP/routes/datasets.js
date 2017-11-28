@@ -85,7 +85,6 @@ module.exports = (function(){
 				// console.log(subgroupId);
 				console.log(subgroupIdIndex);
 
-				console.log(result);
 
 				elem.subgroupName=result.subgroups[subgroupIdIndex].name;
 

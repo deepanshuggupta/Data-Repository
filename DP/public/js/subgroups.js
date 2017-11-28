@@ -140,7 +140,9 @@ function subgroupsGetDataSuccessHandler(data){
 
 	function saveSubgroupSuccessHandler(data){
 		if(data.newRecord){
-			var $div = $('#divSubgroupsTemplate div[subgroup-id]:first').clone();
+			var $div = $('#divSubgroupsTemplate div[purposeEx]').clone();
+
+			$div.removeClass('hide');
 
 			$div.attr('subgroup-id', data.subgroupId);
 			$div.find('[purpose=name]').html(data.name);

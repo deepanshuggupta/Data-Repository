@@ -186,8 +186,9 @@ var consumers = (function(){
 
 	function saveConsumerSuccessHandler(data){
 		if(data.newRecord){
-			var $div = $('#divConsumersTemplate tbody tr[consumer-id]:first').clone();
+			var $div = $('#divConsumersTemplate tbody tr[purposeEx]').clone();
 
+			$div.removeClass('hide');
 			$div.attr('consumer-id', data.consumerId);
 			$div.find('[purpose=name]').html(data.name);
 			$div.find('[purpose=desc]').html(data.desc);

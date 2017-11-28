@@ -23,11 +23,13 @@ module.exports = (function(){
 	}
 
 	function handleMessageFromRepository(req, res){
+		console.log(req.body);
 		var dataset = req.body;
 		dataset.url = undefined;
 
 		fs.readFile('data/datasheets.json', function (err, data) {  
 			var datasets = JSON.parse(data);
+
 			datasets.push(dataset);
 
 			fs.writeFile('data/datasheets.json', JSON.stringify(datasets), function(err, data){

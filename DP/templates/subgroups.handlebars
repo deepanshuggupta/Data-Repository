@@ -60,6 +60,20 @@
 	<p class="row">
 		<span class="glyphicon glyphicon-plus" action="create"></span>
 	</p>
+
+	<div  purposeEx=example class="hide panel panel-default">
+		    <div class="panel-heading"><span purpose="name">{{name}}</span>
+		    	<span class="glyphicon glyphicon-pencil pull-right" action="edit"></span>
+		    	<span class="glyphicon glyphicon-trash pull-right" action="delete"></span>
+		    </div>
+		    <div class="panel-body">
+		    	<div class="row">
+		    		<div class="col-md-1"><label>Description: </label></div>
+		    		<div class="col-md-11" purpose="description">{{{desc}}}</div>
+		    	</div>
+		    </div>
+		</div>
+
 	{{#each .}}
 		<div subgroup-id="{{id}}" class="panel panel-default">
 		    <div class="panel-heading"><span purpose="name">{{name}}</span>

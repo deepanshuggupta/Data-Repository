@@ -75,7 +75,7 @@ module.exports = (function(){
 				desc: req.body.desc
 			};
 			var subgroups = JSON.parse(data);
-			subgroupTA.id = parseInt(subgroups[subgroups.length - 1].id, 10) + 1;
+			subgroupTA.id = parseInt(subgroups.length>0?subgroups[subgroups.length - 1].id:0, 10) + 1;
 			subgroups.push(subgroupTA);
 
 			fs.writeFile('data/subgroups.json', JSON.stringify(subgroups), function(err, data){

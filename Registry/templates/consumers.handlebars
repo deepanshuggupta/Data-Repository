@@ -114,6 +114,18 @@
     </tr>
   </thead>
   <tbody>
+
+  <tr purposeEx=example class="hide">
+      <td purpose="name">{{name}}</td>
+      <td purpose="desc">{{desc}}</td>
+      <td purpose="link">{{link}}</td>
+	  <td>
+	  <span class="glyphicon glyphicon-list-alt pull-right" action="popout" subsIds="{{subscription}}" data-toggle="tooltip" data-placement="top" title="Subscriptions"></span>
+	  <span class="glyphicon glyphicon-pencil pull-right" action="edit" data-toggle="tooltip" data-placement="top" title="Edit"></span>
+	  <span class="glyphicon glyphicon-trash pull-right" action="delete" data-toggle="tooltip" data-placement="top" title="Delete"></span>
+	  </td>
+    
+    </tr>
     
 	{{#each consumers}}
 	<tr consumer-id={{id}}>

@@ -27,17 +27,36 @@ module.exports = (function(){
 		var areaId = req.body.areaId;
 
 		fs.readFile('data/areas.json', function (err, data) {  
-			var areas = JSON.parse(data);
-			var index = areas.findIndex(function(argarea){
+			 areas = JSON.parse(data);
+			 index = areas.findIndex(function(argarea){
 				if(argarea.id == areaId){
 					return true;
 				}
 			});
 
-			areas.splice(index, 1);
-			fs.writeFile('data/areas.json', JSON.stringify(areas), function(err, data){
-				res.send(areaId);
+
+			fs.readFile('data/datasets.json', function(err, data){
+
+				var datasets=JSON.parse(data);
+				var delIndex=datasets.findIndex(function(argdata){
+					if(areaId==argdata.areaId){
+						
+						return true;
+					}
+				});
+
+				console.log("delINDEX:"+delIndex+"INDEX"+index);
+				if(delIndex==-1){
+					areas.splice(index, 1);
+					fs.writeFile('data/areas.json', JSON.stringify(areas), function(err, data){
+						res.send(areaId);
+					});
+				}else{
+					res.send("null");
+				}
+
 			});
+
 		});
 	}
 

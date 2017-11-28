@@ -138,7 +138,9 @@ var units = (function(){
 
 	function saveUnitSuccessHandler(data){
 		if(data.newRecord){
-			var $div = $('#divUnitsTemplate div[unit-id]:first').clone();
+			var $div = $('#divUnitsTemplate div[purposeEx]').clone();
+
+			$div.removeClass('hide');
 
 			$div.attr('unit-id', data.unitId);
 			$div.find('[purpose=name]').html(data.name);

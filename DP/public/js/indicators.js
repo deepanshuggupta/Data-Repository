@@ -7,19 +7,17 @@ var indicators = (function(){
 		
 		// attach events
 		$(document).on("click", 
-					   "#divIndicatorsTemplate [action=delete]", 
-					   handleIndicatorDelete);
+			"#divIndicatorsTemplate [action=delete]", 
+			handleIndicatorDelete);
 		$(document).on("click", 
-					   "#divIndicatorsTemplate [action=edit]", 
-					   handleIndicatorEdit);
+			"#divIndicatorsTemplate [action=edit]", 
+			handleIndicatorEdit);
 		$(document).on("click", 
-					   "#divIndicatorsTemplate [action=create]", 
-					   handleIndicatorCreate);
+			"#divIndicatorsTemplate [action=create]", 
+			handleIndicatorCreate);
 		$(document).on("click", 
-					   "#divIndicatorsTemplate #btnSaveIndicator", 
-					   handleSaveIndicator);
-
-
+			"#divIndicatorsTemplate #btnSaveIndicator", 
+			handleSaveIndicator);
 	}
 
 	function handleHash(){
@@ -64,7 +62,7 @@ var indicators = (function(){
 	function prepareIndicators(){
 		if(prepareIndicators.data && prepareIndicators.templateFunction){
 			var bodyContentHtml = prepareIndicators.templateFunction(
-								  prepareIndicators.data);
+				prepareIndicators.data);
 			injectContentToBody(bodyContentHtml);
 		}
 	}
@@ -76,7 +74,6 @@ var indicators = (function(){
 				data: {
 					indicatorId: $(this).closest('[indicator-id]').attr('indicator-id')
 				},
-				dataType: 'json',
 				method: 'DELETE',
 				success: deleteIndicatorSuccessHandler,
 				error: null
@@ -85,8 +82,14 @@ var indicators = (function(){
 	}
 
 	function deleteIndicatorSuccessHandler(data){
-		alert("indicator deleted successfully.");
-		$('#divIndicatorsTemplate div[indicator-id=' + data + ']').remove();
+		if(data=="null"){
+			alert("Can't delete this indicator, Used in datasets!!");
+
+		}else{
+			alert("indicator deleted successfully.");
+			$('#divIndicatorsTemplate div[indicator-id=' + data + ']').remove();
+		}
+
 	}
 
 	function handleIndicatorEdit(){
@@ -142,8 +145,9 @@ var indicators = (function(){
 
 	function saveIndicatorSuccessHandler(data){
 		if(data.newRecord){
-			var $div = $('#divIndicatorsTemplate div[indicator-id]:first').clone();
+			var $div = $('#divIndicatorsTemplate').find('[purposeEx=example]').clone();
 
+			$div.removeClass('hide');
 			$div.attr('indicator-id', data.indicatorId);
 			$div.find('[purpose=name]').html(data.name);
 			$div.find('[purpose=description]').html(data.desc);

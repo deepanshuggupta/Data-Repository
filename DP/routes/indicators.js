@@ -34,10 +34,28 @@ module.exports = (function(){
 				}
 			});
 
-			indicators.splice(index, 1);
-			fs.writeFile('data/indicators.json', JSON.stringify(indicators), function(err, data){
-				res.send(indicatorId);
+	fs.readFile('data/datasets.json', function(err, data){
+
+				var datasets=JSON.parse(data);
+				var delIndex=datasets.findIndex(function(argdata){
+					if(indicatorId==argdata.indicatorId){
+						
+						return true;
+					}
+				});
+
+				console.log("delINDEX:"+delIndex+"INDEX"+index);
+				if(delIndex==-1){
+					indicators.splice(index, 1);
+					fs.writeFile('data/indicators.json', JSON.stringify(indicators), function(err, data){
+						res.send(indicatorId);
+					});
+				}else{
+					res.send("null");
+				}
+
 			});
+
 		});
 	}
 
@@ -75,7 +93,7 @@ module.exports = (function(){
 				desc: req.body.desc
 			};
 			var indicators = JSON.parse(data);
-			indicatorTA.id = parseInt(indicators[indicators.length - 1].id, 10) + 1;
+			indicatorTA.id = parseInt(indicators.length>0?indicators[indicators.length - 1].id:0, 10) + 1;
 			indicators.push(indicatorTA);
 
 			fs.writeFile('data/indicators.json', JSON.stringify(indicators), function(err, data){

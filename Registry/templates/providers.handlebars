@@ -76,6 +76,14 @@
     </tr>
   </thead>
   <tbody>
+	<tr purposeEx=example class="hide">
+      <td purpose="name">{{name}}</td>
+      <td purpose="desc">{{desc}}</td>
+      <td purpose="link">{{link}}</td>
+	  <td><span class="glyphicon glyphicon-pencil pull-right" action="edit"></span>
+	  <span class="glyphicon glyphicon-trash pull-right" action="delete"></span></td>
+    </tr>
+
     {{#each .}}
 	<tr provider-id={{id}}>
       <td purpose="name">{{name}}</td>

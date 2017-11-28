@@ -72,17 +72,22 @@ var areas = (function(){
 				data: {
 					areaId: $(this).closest('[area-id]').attr('area-id')
 				},
-				dataType: 'json',
 				method: 'DELETE',
 				success: deleteAreaSuccessHandler,
-				error: null
+				error: deleteAreaSuccessHandler
 			});
 		}
 	}
 
 	function deleteAreaSuccessHandler(data){
-		alert("area deleted successfully.");
-		$('#divAreasTemplate ul li[area-id=' + data + ']').remove();
+		console.log("data"+data);
+		if(data=="null"){			
+			alert("Can't delete this area, Used in datasets!!");
+
+		}else{
+			alert("area deleted successfully.");
+			$('#divAreasTemplate ul li[area-id=' + data + ']').remove();
+		}
 	}
 
 	function handleAreaEdit(){
@@ -91,7 +96,7 @@ var areas = (function(){
 
 		$('#divAreasTemplate #hdnAreaIdModal')
 		.val($(this).closest('[area-id]').attr('area-id'));
-		
+
 		$('#divAreasTemplate #txtName')
 		.val($(this).closest('[area-id]').find('[purpose=name]').html());
 
@@ -132,9 +137,12 @@ var areas = (function(){
 		if(data.oldRecord){
 			window.alert("Already Existed");
 
+			$('#divAreasTemplate #divAreaModal').modal('hide');
+
 		}else{
 			if(data.newRecord){
-				var $div = $('#divAreasTemplate ul li[area-id]:first').clone();
+				var $div = $('#divAreasTemplate ul li[purposeEx]').clone();
+				$div.removeClass('hide');
 
 				$div.attr('area-id', data.areaId);
 				$div.find('[purpose=name]').html(data.name);
@@ -153,8 +161,8 @@ var areas = (function(){
 	}
 
 
-		retval.Init = Init;
-		retval.handleHash = handleHash;
+	retval.Init = Init;
+	retval.handleHash = handleHash;
 
-		return retval;
-	})();
+	return retval;
+})();
