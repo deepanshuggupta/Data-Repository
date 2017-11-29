@@ -6,17 +6,17 @@ var units = (function(){
 		injectContentToBody = params.injectContentToBody;
 		// attach events
 		$(document).on("click", 
-					   "#divUnitsTemplate [action=delete]", 
-					   handleUnitDelete);
+			"#divUnitsTemplate [action=delete]", 
+			handleUnitDelete);
 		$(document).on("click", 
-					   "#divUnitsTemplate [action=edit]", 
-					   handleUnitEdit);
+			"#divUnitsTemplate [action=edit]", 
+			handleUnitEdit);
 		$(document).on("click", 
-					   "#divUnitsTemplate [action=create]", 
-					   handleUnitCreate);
+			"#divUnitsTemplate [action=create]", 
+			handleUnitCreate);
 		$(document).on("click", 
-					   "#divUnitsTemplate #btnSaveUnit", 
-					   handleSaveUnit);
+			"#divUnitsTemplate #btnSaveUnit", 
+			handleSaveUnit);
 	}
 
 	function handleHash(){
@@ -61,7 +61,7 @@ var units = (function(){
 	function prepareUnits(){
 		if(prepareUnits.data && prepareUnits.templateFunction){
 			var bodyContentHtml = prepareUnits.templateFunction(
-								  prepareUnits.data);
+				prepareUnits.data);
 			injectContentToBody(bodyContentHtml);
 		}
 	}
@@ -72,7 +72,6 @@ var units = (function(){
 				data: {
 					unitId: $(this).closest('[unit-id]').attr('unit-id')
 				},
-				dataType: 'json',
 				method: 'DELETE',
 				success: deleteUnitSuccessHandler,
 				error: null
@@ -81,8 +80,14 @@ var units = (function(){
 	}
 
 	function deleteUnitSuccessHandler(data){
-		alert("unit deleted successfully.");
-		$('#divUnitsTemplate div[unit-id=' + data + ']').remove();
+		if(data=="null"){			
+			alert("Can't delete this unit, Used in datasets!!");
+
+		}else{
+			alert("unit deleted successfully.");
+			$('#divUnitsTemplate div[unit-id=' + data + ']').remove();
+		}
+
 	}
 
 	function handleUnitEdit(){

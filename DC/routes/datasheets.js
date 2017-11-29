@@ -38,6 +38,24 @@ module.exports = (function(){
 		});
 	}
 
+	function handleDeleteMessageFromRepository(req, res){
+		var datasetId = req.body.id;
+
+		fs.readFile('data/datasheets.json', function (err, data) {  
+			var datasets = JSON.parse(data);
+
+			var index=datasets.findIndex(function(argdata){
+				if(datasetId==argdata.id){
+					return true;
+				}
+			});
+
+			datasets.splice(index, 1);
+			fs.writeFile('data/datasheets.json', JSON.stringify(datasets), function(err, data){
+				res.send('');
+			});
+		});	
+	}
 
 	// define Init
 	function Init(params){
@@ -46,6 +64,7 @@ module.exports = (function(){
 		global.app.get('/datasheets-template/', handleDatasheetsTemplate);
 		global.app.get('/datasheets/', handleDatasheetsGet);
 		global.app.post('/send-message/', handleMessageFromRepository);
+		global.app.post('/delete-message/', handleDeleteMessageFromRepository);
 	}
 
 	// Call Init

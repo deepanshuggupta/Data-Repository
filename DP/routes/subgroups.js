@@ -34,10 +34,27 @@ module.exports = (function(){
 				}
 			});
 
-			subgroups.splice(index, 1);
-			fs.writeFile('data/subgroups.json', JSON.stringify(subgroups), function(err, data){
-				res.send(subgroupId);
+			fs.readFile('data/datasets.json', function(err, data){
+
+				var datasets=JSON.parse(data);
+				var delIndex=datasets.findIndex(function(argdata){
+					if(subgroupId==argdata.subgroupId){
+						
+						return true;
+					}
+				});
+
+				if(delIndex==-1){
+					subgroups.splice(index, 1);
+					fs.writeFile('data/subgroups.json', JSON.stringify(subgroups), function(err, data){
+						res.send(subgroupId);
+					});
+				}else{
+					res.send("null");
+				}
+
 			});
+
 		});
 	}
 

@@ -106,6 +106,7 @@ module.exports = (function(){
 
 	function handleDatasetsDelete(req, res){
 		var datasetId = req.body.datasetId;
+		var datasetTD = {};
 
 		fs.readFile('data/datasets.json', function (err, data) {  
 			var datasets = JSON.parse(data);
@@ -114,10 +115,17 @@ module.exports = (function(){
 					return true;
 				}
 			});
+			datasetTD=datasets[index];
+			datasetTD.url = req.get('host');
 
 			datasets.splice(index, 1);
 			fs.writeFile('data/datasets.json', JSON.stringify(datasets), function(err, data){
-				res.send(datasetId);
+				request.post({
+						url:global.registryLink + "/delete-message", 
+						form: datasetTD
+					}, function(err,httpResponse,body){
+						res.send(datasetId);
+					});
 			});
 		});
 	}

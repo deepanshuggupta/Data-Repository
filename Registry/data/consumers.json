@@ -1,1 +1,1 @@
-[{"name":"WHO","desc":"consumerDesc1","link":"localhost:5000","subscription":["1"],"id":1}]
+[{"name":"consumer","desc":"consumerDesc1","link":"localhost:5000","subscription":["1"],"id":1}]

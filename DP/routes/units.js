@@ -34,10 +34,27 @@ module.exports = (function(){
 				}
 			});
 
-			units.splice(index, 1);
-			fs.writeFile('data/units.json', JSON.stringify(units), function(err, data){
-				res.send(unitId);
+			fs.readFile('data/datasets.json', function(err, data){
+
+				var datasets=JSON.parse(data);
+				var delIndex=datasets.findIndex(function(argdata){
+					if(unitId==argdata.unitId){
+						
+						return true;
+					}
+				});
+
+				if(delIndex==-1){
+					units.splice(index, 1);
+					fs.writeFile('data/units.json', JSON.stringify(units), function(err, data){
+						res.send(unitId);
+					});
+				}else{
+					res.send("null");
+				}
+
 			});
+
 		});
 	}
 

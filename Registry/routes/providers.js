@@ -112,7 +112,7 @@ module.exports = (function(){
 
 				var providerURL=url.format(options);
 
-					// console.log("hi:"+providerURL);
+					console.log("hi:"+providerURL);
 
 				request(providerURL, function(err, response, body){
 					res.send({
@@ -167,6 +167,39 @@ module.exports = (function(){
 		
 	}
 
+	function handleDeleteMessage(req, res){
+		fs.readFile('data/providers.json', function(err, data){
+			var providers=JSON.parse(data);
+			
+			var index = providers.findIndex(function(argprovider){
+				if(argprovider.link == req.body.url){
+					return true;
+				}
+			});
+
+			var pid = providers[index].id;
+
+			fs.readFile('data/consumers.json', function(err, data){
+				var consumers = JSON.parse(data);
+				var interestedConsumers = consumers.filter(function(argConsumer){
+					if(argConsumer.subscription.indexOf(pid + "") != -1){
+						return true;
+					}
+				});
+
+				for(i = 0; i < interestedConsumers.length; i++){
+					request.post({
+						url: "http://" + interestedConsumers[i].link + "/delete-message", 
+						form: req.body
+					});
+				}
+
+				res.send('');
+			});
+		});
+
+	}
+
 	// define Init
 	function Init(params){
 		config = params.config;
@@ -177,6 +210,7 @@ module.exports = (function(){
 		global.app.put('/providers/', handleProvidersUpdate);
 		global.app.post('/providers/', handleProvidersInsert);
 		global.app.post('/send-message', handleSaveMessage);
+		global.app.post('/delete-message', handleDeleteMessage);
 	}
 
 	// Call Init
